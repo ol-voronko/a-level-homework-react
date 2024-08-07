@@ -154,6 +154,10 @@ const RangeInput = ({ min, max, ...originalProps }) => {
 const LoginForm = ({ min, max, onLogin }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+
+  const hasError = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}/.test(
+    password
+  );
   return (
     <div>
       <input value={login} onChange={(e) => setLogin(e.target.value)} />
@@ -162,6 +166,11 @@ const LoginForm = ({ min, max, onLogin }) => {
         type="password"
         onChange={(e) => setPassword(e.target.value)}
       />
+      {!hasError && (
+        <p style={{ color: "red", fontSize: "10px" }}>
+          пароль має містити літери маленького та великого регістру та цифри
+        </p>
+      )}
       <button
         disabled={
           !login ||
@@ -170,7 +179,7 @@ const LoginForm = ({ min, max, onLogin }) => {
           !password ||
           password.length < min ||
           password.length > max ||
-          /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]/.test(password)
+          !hasError
         }
         onClick={() => onLogin({ login, password })}
       >
