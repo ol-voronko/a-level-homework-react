@@ -64,7 +64,23 @@ h2 {
 .App-link {
   color: #61dafb;
 }
+.hour-arrow {
+  position: absolute;
+  z-index: 3;
+  left: 0px;
+}
 
+.minutes-arrow {
+  position: absolute;
+  z-index: 4;
+  left: 0px;
+}
+/* .seconds-arrow {
+  position: absolute;
+  z-index: 5;
+  left: 0px;
+  transform: rotate(-30deg);
+} */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
