@@ -3,328 +3,328 @@ import "./App.css";
 import { data, characters, episodes, characters2 } from "./data";
 
 // lesson 1
-// const NationCard = ({ card }) => {
-//   const {
-//     Nation,
-//     Year,
-//     Population,
-//     ["Slug Nation"]: slugNation,
-//     ["ID Nation"]: idNation,
-//     ["ID Year"]: idYear,
-//   } = card;
-//   return (
-//     <div className="episode">
-//       <h2>{Nation}</h2>
-//       <p>{idNation}</p>
+const NationCard = ({ card }) => {
+  const {
+    Nation,
+    Year,
+    Population,
+    ["Slug Nation"]: slugNation,
+    ["ID Nation"]: idNation,
+    ["ID Year"]: idYear,
+  } = card;
+  return (
+    <div className="episode">
+      <h2>{Nation}</h2>
+      <p>{idNation}</p>
 
-//       <p>{idYear}</p>
-//       <strong>{Year}</strong>
-//       <br />
-//       <span>{Population}</span>
-//       <p>{slugNation}</p>
-//     </div>
-//   );
-// };
+      <p>{idYear}</p>
+      <strong>{Year}</strong>
+      <br />
+      <span>{Population}</span>
+      <p>{slugNation}</p>
+    </div>
+  );
+};
 
-//  const CharacterCard = ({ character }) => {
-//   const {
-//     name,
-//     height,
-//     mass,
-//     hair_color,
-//     skin_color,
-//     eye_color,
-//     birth_year,
-//     gender,
-//     films,
-//   } = character;
-//   return (
-//     <div className="episode">
-//       <h2>{name}</h2>
-//       <span>Зріст :{height} </span>
-//       <span> Вага :{mass} кг </span>
-//       <br />
-//       <span>Колір шкіри: {skin_color}. </span>
-//       {hair_color !== "n/a" && hair_color !== "none" && (
-//         <span>Колір волосся:{hair_color}.</span>
-//       )}
-//       <br />
-//       <span style={{ color: eye_color }}>Колір очей </span>
-//       <span>Рік народження: {birth_year}.</span>
+const CharacterCard = ({ character }) => {
+  const {
+    name,
+    height,
+    mass,
+    hair_color,
+    skin_color,
+    eye_color,
+    birth_year,
+    gender,
+    films,
+  } = character;
+  return (
+    <div className="episode">
+      <h2>{name}</h2>
+      <span>Зріст :{height} </span>
+      <span> Вага :{mass} кг </span>
+      <br />
+      <span>Колір шкіри: {skin_color}. </span>
+      {hair_color !== "n/a" && hair_color !== "none" && (
+        <span>Колір волосся:{hair_color}.</span>
+      )}
+      <br />
+      <span style={{ color: eye_color }}>Колір очей </span>
+      <span>Рік народження: {birth_year}.</span>
 
-//       {gender !== "n/a" && (
-//         <span>{gender.slice(0, 1).toUpperCase() + gender.slice(1)}</span>
-//       )}
+      {gender !== "n/a" && (
+        <span>{gender.slice(0, 1).toUpperCase() + gender.slice(1)}</span>
+      )}
 
-//       <p>
-//         {films.map((film, i) => (
-//           <a href={films[i]}>Фільм{i + 1} </a>
-//         ))}
-//       </p>
-//     </div>
-//   );
-// };
+      <p>
+        {films.map((film, i) => (
+          <a href={films[i]}>Фільм{i + 1} </a>
+        ))}
+      </p>
+    </div>
+  );
+};
 
-//  const Episode = ({ episode }) => {
-//   const { name, air_date, characters } = episode;
-//   return (
-//     <div className="episode">
-//       <h2>{name}</h2>
-//       <strong>{air_date}</strong>
-//       <ul>
-//         {characters.map((character) => (
-//           <li>{character.name} </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
+const Episode = ({ episode }) => {
+  const { name, air_date, characters } = episode;
+  return (
+    <div className="episode">
+      <h2>{name}</h2>
+      <strong>{air_date}</strong>
+      <ul>
+        {characters.map((character) => (
+          <li>{character.name} </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-//  const Episodes = ({ episodes }) => (
-//   <>
-//     <h2>Episodes</h2>
-//     <div className="episodes">
-//       {episodes.map((episode) => (
-//         <Episode episode={episode} />
-//       ))}
-//     </div>
-//   </>
-// );
+const Episodes = ({ episodes }) => (
+  <>
+    <h2>Episodes</h2>
+    <div className="episodes">
+      {episodes.map((episode) => (
+        <Episode episode={episode} />
+      ))}
+    </div>
+  </>
+);
 
-//  const Character = ({ character }) => {
-//   const { name, gender, image, episode } = character;
-//   return (
-//     <div className="episode">
-//       <h2>{name}</h2>
-//       <strong>{gender}</strong>
-//       {image && <img src={image} alt="hero`s portrait " />}
-//       {episode.map(({ name, air_date }) => (
-//         <div>
-//           <p>
-//             {name}
-//             <span>({air_date})</span>
-//           </p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
+const Character = ({ character }) => {
+  const { name, gender, image, episode } = character;
+  return (
+    <div className="episode">
+      <h2>{name}</h2>
+      <strong>{gender}</strong>
+      {image && <img src={image} alt="hero`s portrait " />}
+      {episode.map(({ name, air_date }) => (
+        <div>
+          <p>
+            {name}
+            <span>({air_date})</span>
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+};
 
-// const Characters = ({ characters2 }) => (
-//   <>
-//     <h2>Characters</h2>
-//     <div className="episodes">
-//       {characters2.map((character) => (
-//         <Character character={character} />
-//       ))}
-//     </div>
-//   </>
-// );
+const Characters = ({ characters2 }) => (
+  <>
+    <h2>Characters</h2>
+    <div className="episodes">
+      {characters2.map((character) => (
+        <Character character={character} />
+      ))}
+    </div>
+  </>
+);
 
 // Lesson 2
 
-// const Spoiler = ({ header = "+", open, children }) => {
-//   const [isOpen, setIsOpen] = useState(open);
-//   return (
-//     <div>
-//       <div onClick={() => setIsOpen((open) => !open)}>{header}</div>
-//       {isOpen && children}
-//     </div>
-//   );
-// };
+const Spoiler = ({ header = "+", open, children }) => {
+  const [isOpen, setIsOpen] = useState(open);
+  return (
+    <div>
+      <div onClick={() => setIsOpen((open) => !open)}>{header}</div>
+      {isOpen && children}
+    </div>
+  );
+};
 
-// const RangeInput = ({ min, max, ...originalProps }) => {
-//   const [text, setText] = useState("");
-//   return (
-//     <>
-//       <input
-//         value={text}
-//         style={
-//           text.length && (text.length < min || text.length > max)
-//             ? { backgroundColor: "red" }
-//             : { backgroundColor: "transparent" }
-//         }
-//         onChange={(e) => setText(e.target.value)}
-//       />
-//     </>
-//   );
-// };
+const RangeInput = ({ min, max, ...originalProps }) => {
+  const [text, setText] = useState("");
+  return (
+    <>
+      <input
+        value={text}
+        style={
+          text.length && (text.length < min || text.length > max)
+            ? { backgroundColor: "red" }
+            : { backgroundColor: "transparent" }
+        }
+        onChange={(e) => setText(e.target.value)}
+      />
+    </>
+  );
+};
 
-// const LoginForm = ({ min, max, onLogin }) => {
-//   const [login, setLogin] = useState("");
-//   const [password, setPassword] = useState("");
+const LoginForm = ({ min, max, onLogin }) => {
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
 
-//   const hasError = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}/.test(
-//     password
-//   );
-//   return (
-//     <div>
-//       <input value={login} onChange={(e) => setLogin(e.target.value)} />
-//       <input
-//         value={password}
-//         type="password"
-//         onChange={(e) => setPassword(e.target.value)}
-//       />
-//       {!hasError && (
-//         <p style={{ color: "red", fontSize: "10px" }}>
-//           пароль має містити літери маленького та великого регістру та цифри
-//         </p>
-//       )}
-//       <button
-//         disabled={
-//           !login ||
-//           login.length < min ||
-//           login.length > max ||
-//           !password ||
-//           password.length < min ||
-//           password.length > max ||
-//           !hasError
-//         }
-//         onClick={() => onLogin({ login, password })}
-//       >
-//         Login
-//       </button>
-//     </div>
-//   );
-// };
+  const hasError = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}/.test(
+    password
+  );
+  return (
+    <div>
+      <input value={login} onChange={(e) => setLogin(e.target.value)} />
+      <input
+        value={password}
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      {!hasError && (
+        <p style={{ color: "red", fontSize: "10px" }}>
+          пароль має містити літери маленького та великого регістру та цифри
+        </p>
+      )}
+      <button
+        disabled={
+          !login ||
+          login.length < min ||
+          login.length > max ||
+          !password ||
+          password.length < min ||
+          password.length > max ||
+          !hasError
+        }
+        onClick={() => onLogin({ login, password })}
+      >
+        Login
+      </button>
+    </div>
+  );
+};
 
-// const PasswordConfirm = ({ min }) => {
-//   const [password, setPassword] = useState("");
-//   const [passConfirm, setPassConfirm] = useState("");
+const PasswordConfirm = ({ min }) => {
+  const [password, setPassword] = useState("");
+  const [passConfirm, setPassConfirm] = useState("");
 
-//   return (
-//     <div>
-//       <input
-//         type="password"
-//         value={password}
-//         style={
-//           password.length &&
-//           (password !== passConfirm ||
-//             password.length < min ||
-//             /[^0-9A-Za-z]/.test(password))
-//             ? { backgroundColor: "red" }
-//             : { backgroundColor: "transparent" }
-//         }
-//         onChange={(e) => setPassword(e.target.value)}
-//       />
-//       <input
-//         type="password"
-//         value={passConfirm}
-//         style={
-//           passConfirm.length &&
-//           (passConfirm !== password ||
-//             passConfirm.length < min ||
-//             /[^0-9A-Za-z]/.test(passConfirm))
-//             ? { backgroundColor: "red" }
-//             : { backgroundColor: "transparent" }
-//         }
-//         onChange={(e) => setPassConfirm(e.target.value)}
-//       />
-//     </div>
-//   );
-// };
+  return (
+    <div>
+      <input
+        type="password"
+        value={password}
+        style={
+          password.length &&
+          (password !== passConfirm ||
+            password.length < min ||
+            /[^0-9A-Za-z]/.test(password))
+            ? { backgroundColor: "red" }
+            : { backgroundColor: "transparent" }
+        }
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <input
+        type="password"
+        value={passConfirm}
+        style={
+          passConfirm.length &&
+          (passConfirm !== password ||
+            passConfirm.length < min ||
+            /[^0-9A-Za-z]/.test(passConfirm))
+            ? { backgroundColor: "red" }
+            : { backgroundColor: "transparent" }
+        }
+        onChange={(e) => setPassConfirm(e.target.value)}
+      />
+    </div>
+  );
+};
 
-// const Carousel = ({ images }) => {
-//   const [current, setCurrent] = useState(0);
+const Carousel = ({ images }) => {
+  const [current, setCurrent] = useState(0);
 
-//   return (
-//     <div>
-//       <img
-//         src={images[current]}
-//         style={{ width: "75vw", aspectRatio: "2", position: "relative" }}
-//         alt="beauty of nature"
-//         onClick={(e) => {
-//           const { layerX } = e.nativeEvent;
-//           const { clientWidth } = e.target;
+  return (
+    <div>
+      <img
+        src={images[current]}
+        style={{ width: "75vw", aspectRatio: "2", position: "relative" }}
+        alt="beauty of nature"
+        onClick={(e) => {
+          const { layerX } = e.nativeEvent;
+          const { clientWidth } = e.target;
 
-//           layerX < clientWidth / 3
-//             ? setCurrent((current) =>
-//                 current === 0 ? (current = images.length - 1) : +current - 1
-//               )
-//             : setCurrent((current) =>
-//                 current === images.length - 1 ? (current = 0) : +current + 1
-//               );
-//         }}
-//       />
-//       <Thumbnails
-//         images={images}
-//         current={current}
-//         onChange={(index) => setCurrent(index)}
-//       />
-//     </div>
-//   );
-// };
+          layerX < clientWidth / 3
+            ? setCurrent((current) =>
+                current === 0 ? (current = images.length - 1) : +current - 1
+              )
+            : setCurrent((current) =>
+                current === images.length - 1 ? (current = 0) : +current + 1
+              );
+        }}
+      />
+      <Thumbnails
+        images={images}
+        current={current}
+        onChange={(index) => setCurrent(index)}
+      />
+    </div>
+  );
+};
 
-// const Thumbnails = ({ images, current, onChange }) => {
-//   return (
-//     <div className="thumbnails">
-//       {images.map((image, index) => (
-//         <img
-//           src={image}
-//           alt="beauty of nature"
-//           width={100}
-//           onClick={() => onChange(index)}
-//           style={
-//             index === current
-//               ? {
-//                   border: " 5px, solid ,black",
-//                   padding: "2px",
-//                 }
-//               : {
-//                   border: " none",
-//                   width: "100px",
-//                   boxSizing: "border-box",
-//                 }
-//           }
-//         />
-//       ))}
-//     </div>
-//   );
-// };
+const Thumbnails = ({ images, current, onChange }) => {
+  return (
+    <div className="thumbnails">
+      {images.map((image, index) => (
+        <img
+          src={image}
+          alt="beauty of nature"
+          width={100}
+          onClick={() => onChange(index)}
+          style={
+            index === current
+              ? {
+                  border: " 5px, solid ,black",
+                  padding: "2px",
+                }
+              : {
+                  border: " none",
+                  width: "100px",
+                  boxSizing: "border-box",
+                }
+          }
+        />
+      ))}
+    </div>
+  );
+};
 
-// const Content = ({ page }) => (
-//   <div style={{ fontSize: "5em" }}>Сторінка №{page}</div>
-// );
+const Content = ({ page }) => (
+  <div style={{ fontSize: "5em" }}>Сторінка №{page}</div>
+);
 
-// const Color = ({ page }) => (
-//   <div style={{ color: `rgb(${page * 16},${page * 16},${page * 16})` }}>
-//     {page}
-//   </div>
-// );
+const Color = ({ page }) => (
+  <div style={{ color: `rgb(${page * 16},${page * 16},${page * 16})` }}>
+    {page}
+  </div>
+);
 
-// const Pagination = ({ render, max }) => {
-//   const [page, setPage] = useState(1);
-//   const Render = render;
-//   const numButtons = [];
-//   for (let i = 1; i <= max; i++) {
-//     numButtons.push(i);
-//   }
-//   return (
-//     <div>
-//       <Render page={page} />
-//       <button disabled={page === 1} onClick={() => setPage(1)}>
-//         &lt; &lt;
-//       </button>
-//       <button disabled={page === 1} onClick={() => setPage(page - 1)}>
-//         &lt;
-//       </button>
-//       {numButtons.map((numButton, index) => (
-//         <button
-//           disabled={index === page - 1}
-//           onClick={() => setPage(numButton)}
-//         >
-//           {numButton}
-//         </button>
-//       ))}
-//       <button disabled={page === max} onClick={() => setPage(page + 1)}>
-//         &gt;
-//       </button>
-//       <button disabled={page === max} onClick={() => setPage(max)}>
-//         &gt; &gt;
-//       </button>
-//     </div>
-//   );
-// };
+const Pagination = ({ render, max }) => {
+  const [page, setPage] = useState(1);
+  const Render = render;
+  const numButtons = [];
+  for (let i = 1; i <= max; i++) {
+    numButtons.push(i);
+  }
+  return (
+    <div>
+      <Render page={page} />
+      <button disabled={page === 1} onClick={() => setPage(1)}>
+        &lt; &lt;
+      </button>
+      <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+        &lt;
+      </button>
+      {numButtons.map((numButton, index) => (
+        <button
+          disabled={index === page - 1}
+          onClick={() => setPage(numButton)}
+        >
+          {numButton}
+        </button>
+      ))}
+      <button disabled={page === max} onClick={() => setPage(page + 1)}>
+        &gt;
+      </button>
+      <button disabled={page === max} onClick={() => setPage(max)}>
+        &gt; &gt;
+      </button>
+    </div>
+  );
+};
 
 const Timer = ({ ms = 1000 }) => {
   const [count, setCount] = useState(ms);
@@ -345,7 +345,6 @@ const Timer = ({ ms = 1000 }) => {
     };
   }, []);
 
-  // console.log("Оновлення", count);
   useEffect(() => {
     if (paused) {
       clearInterval(intervalRef.current);
@@ -485,7 +484,7 @@ const Watch = ({ seconds }) => {
         marginTop: "20vh",
         marginLeft: "10vw",
         width: "200px",
-        position: "absolute",
+        position: "relative",
       }}
     >
       {numbers.map((number, index) => (
@@ -495,7 +494,7 @@ const Watch = ({ seconds }) => {
             left: "100px",
             top: "0px",
             height: "200px",
-            // width: "200px",
+
             transform: `rotate(${(index + 1) * 30 - 4}deg)`,
             fontWeight: "700",
             color: "red",
@@ -545,7 +544,6 @@ const Watch = ({ seconds }) => {
         src="../images/ClockFace_S.png"
         alt="ClockFace second`s arrow"
         height={200}
-        // className="seconds-arrow"
         style={{
           position: " absolute",
           zIndex: "5",
@@ -601,23 +599,6 @@ const TimerControllContainer = ({ render, refresh }) => {
     </div>
   );
 };
-
-// InputsType = {key:Math.random(), value:""}
-//setInputs((inputs)=>[...inputs, {key:Math.random(), value:""}])
-/*
- *inputs.map(({key,value},index)=>
-  <div key={key}>
-      <input value={value} onChange={(e)=>{
-        setInputs((inputs)=>{
-          const newInputs=[...inputs];
-          newInputs[index].value=e.target.value;
-          return newInputs
-        }
-        )
-        }}/>
-    </div) 
- * 
- */
 
 const Phonebook = () => {
   const [inputs, setInputs] = useState([]);
@@ -691,7 +672,7 @@ const Phonebook = () => {
 function App() {
   return (
     <div className="App">
-      {/* <h2>Nation</h2>
+      <h2>Nation</h2>
       <div className="episodes">
         {data.map((card) => (
           <NationCard card={card} />
@@ -729,14 +710,14 @@ function App() {
         onChange
       />
       <Pagination max={10} render={Content} />
-      <Pagination max={15} render={Color} /> */}
-      {/* <Timer ms={5000} /> */}
-      {/* <TimerControll />
+      <Pagination max={15} render={Color} />
+      <Timer ms={5000} />
+      <TimerControll />
 
       <TimerContainer seconds={30} refresh={1000} render={SecondsTimer} />
       <TimerContainer seconds={30} refresh={1000} render={LCD} />
 
-      <TimerContainer seconds={30} refresh={1000} render={Watch} /> */}
+      <TimerContainer seconds={30} refresh={1000} render={Watch} />
       <TimerControllContainer refresh={10000} render={Watch} />
       <Phonebook />
     </div>
