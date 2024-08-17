@@ -428,12 +428,15 @@ const TimerContainer = ({ seconds, refresh, render }) => {
   const Render = render;
   const [count, setCount] = useState(seconds);
 
-  let t = performance.now();
+  const timeRef = useRef(performance.now());
   const intervalRef = useRef();
 
   useEffect(() => {
     intervalRef.current = setInterval(
-      () => setCount((seconds - (performance.now() - t) / 1000).toFixed()),
+      () =>
+        setCount(
+          (seconds - (performance.now() - timeRef.current) / 1000).toFixed()
+        ),
       refresh
     );
 
@@ -714,10 +717,10 @@ function App() {
       <Timer ms={5000} />
       <TimerControll />
 
-      <TimerContainer seconds={30} refresh={1000} render={SecondsTimer} />
+      <TimerContainer seconds={30} refresh={5000} render={SecondsTimer} />
       <TimerContainer seconds={30} refresh={1000} render={LCD} />
 
-      <TimerContainer seconds={30} refresh={1000} render={Watch} />
+      <TimerContainer seconds={30} refresh={5000} render={Watch} />
       <TimerControllContainer refresh={10000} render={Watch} />
       <Phonebook />
     </div>
